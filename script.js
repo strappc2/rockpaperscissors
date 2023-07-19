@@ -61,7 +61,7 @@ function playRound(playerSelection, computerSelection) {
         var verb = "beats";
         var winner = choices[playerChoice];
         var loser = choices[compChoice];
-    } else if (playerChoice == 0 && compChoice == 2) {
+    } else if (playerChoice == 1 && compChoice == 2) {
         var outcome = "lose";
         var verb = "beats";
         var loser = choices[playerChoice];
@@ -82,7 +82,36 @@ function playRound(playerSelection, computerSelection) {
     }
     
     let response = "You " + outcome + "! " + winner + " " + verb + " " + loser;
-    return response;
+    return { response, outcome };
 }
 
-console.log(playRound("scissors", "paper"));
+
+
+function game() {
+    var playerScore = 0;
+    var compScore = 0;
+    for (let index = 0; index < 5; index++) {
+        let playerResponse = prompt("Rock, Paper, or Scissors?")
+        let { outcome, response } = playRound(playerResponse, getComputerChoice());
+
+        console.log(response)
+        if (outcome == "lose") {
+            compScore += 1;
+        } else if (outcome == "win") {
+            playerScore += 1;
+        }
+
+        console.log("Player Score: " + playerScore)
+        console.log("Computer Score: " + compScore)
+    }
+
+    if (playerScore > compScore) {
+        console.log("You win!")
+    } else if (playerScore < compScore) {
+        console.log("You Lose!")
+    } else {
+        console.log ("It's a tie")
+    }
+}
+
+game();
