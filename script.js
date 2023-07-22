@@ -91,7 +91,9 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     var playerScore = 0;
     var compScore = 0;
-    for (let index = 0; index < 5; index++) { //for loop to run 5 times
+
+
+    while (playerScore < 5 && compScore < 5) { //while loop to run until someone reaches 5
         let playerResponse = prompt("Rock, Paper, or Scissors?")
         let { outcome, response } = playRound(playerResponse, getComputerChoice());
 
