@@ -2,6 +2,8 @@
 //choices are either rock, paper, or scissors
 
 const choices = ['Rock', 'Paper', 'Scissors']
+const outcomeP = document.querySelector("#outcomeP")
+const sentence = document.querySelector("#sentence")
 
 //function to simulate computer choice
 //will return either "Rock", "Paper", or "Scissors"
@@ -109,14 +111,16 @@ function playRound(playerSelection, computerSelection) {
       } else if (outcome == "win") {
         playerScore += 1;
       }
-      console.log("Player Score: " + playerScore)
-      console.log("Computer Score: " + compScore)
+      outcomeP.textContent = ("Player Score: " + playerScore + "\nComputer Score: " + compScore)
+      sentence.textContent = response
 
       if (playerScore >= 5) {
-        console.log("You win!")
-      } else if (compScore >= 5) {
-        console.log("You lose!")
-      }
+        sentence.textContent = "Cograts! You win!"
+        outcomeP.textContent = ("Final Score: Player Score: " + playerScore + "\nComputer Score: " + compScore)
+    } else if (compScore >= 5) {
+        sentence.textContent = "You suck loser!"
+        outcomeP.textContent = ("Final Score: Player Score: " + playerScore + "\nComputer Score: " + compScore)
+    }
 
 
     });

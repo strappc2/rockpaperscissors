@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+}
+#container {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+#buttonContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    flex: 1;
+    height: 50px;
+}
