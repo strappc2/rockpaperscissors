@@ -88,33 +88,43 @@ function playRound(playerSelection, computerSelection) {
 
 
 //Simulate a game playing 5 rounds
-function game() {
     var playerScore = 0;
     var compScore = 0;
 
+    // buttons is a node list. It looks and acts much like an array.
+    const buttons = document.querySelectorAll('button');
 
-    while (playerScore < 5 && compScore < 5) { //while loop to run until someone reaches 5
-        let playerResponse = prompt("Rock, Paper, or Scissors?")
-        let { outcome, response } = playRound(playerResponse, getComputerChoice());
+    // we use the .forEach method to iterate through each button
+    buttons.forEach((button) => {
 
-        console.log(response)
-        if (outcome == "lose") {
-            compScore += 1;
-        } else if (outcome == "win") {
-            playerScore += 1;
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+        if (playerScore >= 5 || compScore >= 5) {
+            return
         }
+      var playerResponse = button.id;
+      var {outcome, response } = playRound(choices[playerResponse], getComputerChoice())
+      if (outcome == "lose") {
+        compScore += 1;
+      } else if (outcome == "win") {
+        playerScore += 1;
+      }
+      console.log("Player Score: " + playerScore)
+      console.log("Computer Score: " + compScore)
 
-        console.log("Player Score: " + playerScore)
-        console.log("Computer Score: " + compScore)
-    }
-
-    if (playerScore > compScore) {
+      if (playerScore >= 5) {
         console.log("You win!")
-    } else if (playerScore < compScore) {
-        console.log("You Lose!")
-    } else {
-        console.log ("It's a tie")
-    }
-}
+      } else if (compScore >= 5) {
+        console.log("You lose!")
+      }
 
-game();
+
+    });
+  });
+
+
+
+
+    
+
+
